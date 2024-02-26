@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load django_bootstrap5 %}
+
+{% block body %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+</head>
+<body>
+    {% if user.is_authenticated %}
+        <p style="font-size: 60px;">안녕하세요, {{ user.username }}님!</p>
+        <a href="{% url 'accounts:logout' %}">로그아웃</a>
+    {% else %}
+        <form method="post">
+            {% csrf_token %}
+            <p style="font-size: 60px;"><label for="id_username">Username:</label> <input type="text" name="username" id="id_username"></p>
+            <p style="font-size: 60px;"><label for="id_password">Password:</label> <input type="password" name="password" id="id_password"></p>
+
+            <button type="submit">로그인</button>
+        </form>
+    {% endif %}
+</body>
+</html>
+
+{% endblock %}

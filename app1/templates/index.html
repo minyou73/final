@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block body %}
+    <h1 style="font-size: 60px;">안녕하세요,</h1>
+    <p style="font-size: 30px;">{{ user.username }}님!</p1>
+
+    <form action="{% url 'app1:add_score' %}" method="post">
+        {% csrf_token %}
+        <button type="submit" style="background-color: blue; color: white;">점수 추가</button>
+    </form>
+
+    <p style="font-size: 24px;">당신의 점수: {{ points }}</p>
+
+{% endblock %}
